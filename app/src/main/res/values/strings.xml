@@ -8,4 +8,5 @@
     <string name="personUpdateBtnText">Kişiyi Güncelle</string>
     <string name="personPhoneNumberDetailText">Kişinin Yeni Numarası</string>
     <string name="personNameDetailText">Kişinin Yeni Adı</string>
+    <string name="action_find_text">Ara</string>
 </resources>
