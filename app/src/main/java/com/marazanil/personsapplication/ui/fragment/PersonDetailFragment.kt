@@ -35,7 +35,7 @@ class PersonDetailFragment : Fragment() {
         return binding.root
     }
 
-    fun personUpdate(personId:Long,personDetailName:String , personPhoneNumberDetail : String){
+    private fun personUpdate(personId:Long, personDetailName:String, personPhoneNumberDetail : String){
         Log.d("Kişiler Güncellendi" , "$personId - $personDetailName - $personPhoneNumberDetail")
 
     }
