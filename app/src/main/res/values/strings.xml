@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PersonsApplication</string>
+    <string name="contentDescriptionFab">Kişi Ekle</string>
+    <string name="personSaveBtnText">Kişiyi Kaydet</string>
+    <string name="backButtonAtRegistrationText">Geri Dön</string>
+    <string name="personNameText">Kişi Adı</string>
+    <string name="personPhoneNumber">Kişinin Numarası</string>
+    <string name="personUpdateBtnText">Kişiyi Güncelle</string>
+    <string name="personPhoneNumberDetailText">Kişinin Yeni Numarası</string>
+    <string name="personNameDetailText">Kişinin Yeni Adı</string>
+</resources>
