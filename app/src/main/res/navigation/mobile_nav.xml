@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.marazanil.personsapplication.ui.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/toPersonDetailFragment"
+            app:destination="@id/personDetailFragment" />
+        <action
+            android:id="@+id/toPersonRegistrationFragment"
+            app:destination="@id/personRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personDetailFragment"
+        android:name="com.marazanil.personsapplication.ui.fragment.PersonDetailFragment"
+        android:label="fragment_person_detail"
+        tools:layout="@layout/fragment_person_detail" >
+        <action
+            android:id="@+id/backToMainFragmentAtDetail"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="person"
+            app:argType="com.marazanil.personsapplication.data.entity.Persons" />
+    </fragment>
+    <fragment
+        android:id="@+id/personRegistrationFragment"
+        android:name="com.marazanil.personsapplication.ui.fragment.PersonRegistrationFragment"
+        android:label="fragment_person_registration"
+        tools:layout="@layout/fragment_person_registration" >
+        <action
+            android:id="@+id/backToMainFragmentAtRegistration"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
