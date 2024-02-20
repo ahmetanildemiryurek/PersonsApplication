@@ -9,14 +9,17 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.marazanil.personsapplication.R
+import com.marazanil.personsapplication.data.entity.Persons
 import com.marazanil.personsapplication.databinding.FragmentMainBinding
+import com.marazanil.personsapplication.ui.adapter.PersonAdapter
 
 class MainFragment : Fragment(),SearchView.OnQueryTextListener{
 
@@ -28,6 +31,17 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
         binding.toolbarMain.title = "Kişiler"
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarMain)
 
+        binding.rv.layoutManager = LinearLayoutManager(requireContext())
+        val personList = ArrayList<Persons>()
+        val p1 = Persons(1,"Anil","1234")
+        val p2 = Persons(2,"Anil2","12345")
+        val p3 = Persons(3,"Anil3","123456")
+            personList.add(p1)
+            personList.add(p2)
+            personList.add(p3)
+
+        val personAdapter = PersonAdapter(requireContext(),personList)
+        binding.rv.adapter = personAdapter
 
         binding.addPersonFabBtn.setOnClickListener {
             findNavController().navigate(R.id.toPersonRegistrationFragment)
@@ -37,11 +51,10 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
         requireActivity().addMenuProvider(object :MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.toolbar_menu , menu)
-
                 //kullanıcının arama metninde yapacağı herhangi bir değişiklik(silme-yazma) veya
                 //arama gibi işlemler için gerekli olan onMenuItemSelected ve onQueryTextSubmit
                 //kodlarını onCreate içinde tanımlamış olduk.
-                val item = menu.findItem(R.id.action_find)
+              val item = menu.findItem(R.id.action_find)
                 val searchView = item.actionView as SearchView
                 searchView.setOnQueryTextListener(this@MainFragment)
 
@@ -72,5 +85,12 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
 
     fun search(searchingWords : String){
     Log.d("Aranan Kelime" , searchingWords)
+    }
+
+    //bu sayfaya geri döndüğümüzü anlamamızı sağlayacak olan fun
+    override fun onResume() {
+        super.onResume()
+        Log.d("Ana Sayfaya dönüldü" , "Döndük")
+
     }
 }
