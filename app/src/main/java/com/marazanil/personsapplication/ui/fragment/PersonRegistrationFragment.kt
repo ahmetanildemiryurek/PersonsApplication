@@ -26,6 +26,7 @@ class PersonRegistrationFragment : Fragment() {
         }
         return binding.root
     }
+        //event handler kullandık (dataBinding ile)
          fun personSaveBtn(personName : String, personPhoneNumber : String){
             Toast.makeText(context,"$personName başarıyla Kaydedildi",Toast.LENGTH_SHORT).show()
             Log.d("Kaydedilen Kişiler","$personName - $personPhoneNumber")

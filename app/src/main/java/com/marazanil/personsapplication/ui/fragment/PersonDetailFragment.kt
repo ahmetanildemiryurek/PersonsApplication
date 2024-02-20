@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,29 +18,25 @@ class PersonDetailFragment : Fragment() {
     private lateinit var binding : FragmentPersonDetailBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentPersonDetailBinding.inflate(inflater , container ,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_person_detail , container ,false)
+        binding.personDetailFragment = this
+        binding.toolbarPersonDetailTitle = "Kişi Detayları"
 
-        binding.toolbarPersonDetail.title = "Kişi Detayları"
-
+        //Jetpack Navigation kütüphanesini kullanarak bir fragmenta iletilen argümanları aldık
+        // ve bu argümanlardan özel bir argümanı alarak fragment içinde kullanılabilir hale getirdik (navArgs ile)
         val bundle : PersonDetailFragmentArgs by navArgs()
         val incomingPerson = bundle.person
 
-        binding.personNameDetail.setText(incomingPerson.personName)
-        binding.personPhoneNumberDetail.setText(incomingPerson.personNumber)
+        binding.personObject = incomingPerson
 
-        binding.personUpdateBtn.setOnClickListener {
-            val personNameDetail = binding.personNameDetail.text.toString()
-            val personPhoneNumberDetail = binding.personPhoneNumberDetail.text.toString()
 
-            personUpdate(incomingPerson.personId,personNameDetail,personPhoneNumberDetail)
-        }
         binding.backButtonAtRegistration.setOnClickListener {
             findNavController().navigate(R.id.backToMainFragmentAtDetail)
         }
         return binding.root
     }
 
-    private fun personUpdate(personId:Long, personDetailName:String, personPhoneNumberDetail : String){
+     fun personUpdateBtn(personId:Long, personDetailName:String, personPhoneNumberDetail : String){
         Log.d("Kişiler Güncellendi" , "$personId - $personDetailName - $personPhoneNumberDetail")
 
     }
