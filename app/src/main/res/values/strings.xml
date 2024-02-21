@@ -9,4 +9,5 @@
     <string name="personPhoneNumberDetailText">Kişinin Yeni Numarası</string>
     <string name="personNameDetailText">Kişinin Yeni Adı</string>
     <string name="action_find_text">Ara</string>
+    <string name="personInformationHint">Kişi Bilgileri :</string>
 </resources>

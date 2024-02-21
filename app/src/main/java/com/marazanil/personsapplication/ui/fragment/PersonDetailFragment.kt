@@ -19,6 +19,7 @@ class PersonDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_person_detail , container ,false)
+        //event handle eşleşmesi yapıyor
         binding.personDetailFragment = this
         binding.toolbarPersonDetailTitle = "Kişi Detayları"
 

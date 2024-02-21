@@ -13,7 +13,9 @@ import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marazanil.personsapplication.R
@@ -26,27 +28,28 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
     private lateinit var binding : FragmentMainBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
 
-        binding.toolbarMain.title = "Kişiler"
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main,container, false)
+        binding.mainFragment = this
+        binding.toolbarMainTitle= "Kişiler"
+
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarMain)
 
-        binding.rv.layoutManager = LinearLayoutManager(requireContext())
         val personList = ArrayList<Persons>()
         val p1 = Persons(1,"Anil","1234")
         val p2 = Persons(2,"Anil2","12345")
         val p3 = Persons(3,"Anil3","123456")
+        val p4 = Persons(4,"Anil4","1234567")
+        val p5 = Persons(5,"Anil5","1234568")
             personList.add(p1)
             personList.add(p2)
             personList.add(p3)
+            personList.add(p4)
+            personList.add(p5)
 
         val personAdapter = PersonAdapter(requireContext(),personList)
-        binding.rv.adapter = personAdapter
+        binding.personAdapter = personAdapter
 
-        binding.addPersonFabBtn.setOnClickListener {
-            findNavController().navigate(R.id.toPersonRegistrationFragment)
-            Toast.makeText(context,"Kişi Ekleme Sayfasına Yönlendirildi",Toast.LENGTH_SHORT).show()
-        }
 
         requireActivity().addMenuProvider(object :MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -71,6 +74,9 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
 
 
     }
+    fun clickAddPersonFabBtn(it:View){
+        Navigation.findNavController(it).navigate(R.id.toPersonRegistrationFragment)
+    }
     //aramak için butona tıkladığımızda ise bu çalışır
     override fun onQueryTextSubmit(query: String): Boolean {
         search(query)
@@ -87,7 +93,7 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
     Log.d("Aranan Kelime" , searchingWords)
     }
 
-    //bu sayfaya geri döndüğümüzü anlamamızı sağlayacak olan fun
+    //bu sayfaya geri döndüğümüzü anlamamızı sağlayacak olan lifecycle fun
     override fun onResume() {
         super.onResume()
         Log.d("Ana Sayfaya dönüldü" , "Döndük")

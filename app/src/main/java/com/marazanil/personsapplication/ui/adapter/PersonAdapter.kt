@@ -5,9 +5,11 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.marazanil.personsapplication.R
 import com.marazanil.personsapplication.data.entity.Persons
 import com.marazanil.personsapplication.databinding.CardDesignBinding
 import com.marazanil.personsapplication.ui.fragment.MainFragment
@@ -24,7 +26,7 @@ class PersonAdapter(var mContext: Context, var personList:List<Persons>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardDesignHolder {
         val layoutInflater = LayoutInflater.from(mContext)
-        val binding = CardDesignBinding.inflate(layoutInflater, parent ,false)
+        val binding : CardDesignBinding = DataBindingUtil.inflate(layoutInflater, R.layout.card_design ,parent ,false)
         return CardDesignHolder(binding)
     }
 
@@ -36,8 +38,7 @@ class PersonAdapter(var mContext: Context, var personList:List<Persons>)
         val person = personList.get(position)
         val b = holder.binding
 
-        b.personInformation.text = "${person.personName} - ${person.personNumber}"
-
+            b.personObject = person
         //veri transferinde gönderilen yerin sonuna directions eki gelir ve böylece verileri taşımış oluruz
         b.personsCardView.setOnClickListener {
             val transition = MainFragmentDirections.toPersonDetailFragment(person = person)
