@@ -14,8 +14,12 @@ import com.marazanil.personsapplication.data.entity.Persons
 import com.marazanil.personsapplication.databinding.CardDesignBinding
 import com.marazanil.personsapplication.ui.fragment.MainFragment
 import com.marazanil.personsapplication.ui.fragment.MainFragmentDirections
+import com.marazanil.personsapplication.ui.viewmodel.MainFragmentViewModel
+import com.marazanil.personsapplication.ui.viewmodel.PersonRegistrationFragmentViewModel
 
-class PersonAdapter(var mContext: Context, var personList:List<Persons>)
+class PersonAdapter(var mContext: Context,
+                    var personList:List<Persons>,
+                    var viewModel: MainFragmentViewModel)
     : RecyclerView.Adapter<PersonAdapter.CardDesignHolder>(){
         inner class CardDesignHolder(binding: CardDesignBinding):RecyclerView.ViewHolder(binding.root){
             var binding : CardDesignBinding
@@ -48,8 +52,8 @@ class PersonAdapter(var mContext: Context, var personList:List<Persons>)
         b.deletePersonInformation.setOnClickListener { view ->
             val sb = Snackbar.make(view, "${person.personName} silinsin mi?", Snackbar.LENGTH_LONG)
             sb.setAction("EVET") {
-                Log.d("Silinen Kişi:", person.personId.toString())
-            }
+                viewModel.delete(person.personId )
+                            }
             sb.show()
         }
     }
