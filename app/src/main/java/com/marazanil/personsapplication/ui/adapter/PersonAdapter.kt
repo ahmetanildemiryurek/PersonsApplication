@@ -16,6 +16,7 @@ import com.marazanil.personsapplication.ui.fragment.MainFragment
 import com.marazanil.personsapplication.ui.fragment.MainFragmentDirections
 import com.marazanil.personsapplication.ui.viewmodel.MainFragmentViewModel
 import com.marazanil.personsapplication.ui.viewmodel.PersonRegistrationFragmentViewModel
+import com.marazanil.personsapplication.util.makeTransition
 
 class PersonAdapter(var mContext: Context,
                     var personList:List<Persons>,
@@ -46,7 +47,7 @@ class PersonAdapter(var mContext: Context,
         //veri transferinde gönderilen yerin sonuna directions eki gelir ve böylece verileri taşımış oluruz
         b.personsCardView.setOnClickListener {
             val transition = MainFragmentDirections.toPersonDetailFragment(person = person)
-            Navigation.findNavController(it).navigate(transition)
+            Navigation.makeTransition(it,transition)
         }
 
         b.deletePersonInformation.setOnClickListener { view ->

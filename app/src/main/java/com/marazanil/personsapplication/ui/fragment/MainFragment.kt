@@ -26,6 +26,7 @@ import com.marazanil.personsapplication.databinding.FragmentMainBinding
 import com.marazanil.personsapplication.ui.adapter.PersonAdapter
 import com.marazanil.personsapplication.ui.viewmodel.MainFragmentViewModel
 import com.marazanil.personsapplication.ui.viewmodel.PersonDetailFragmentViewModel
+import com.marazanil.personsapplication.util.makeTransition
 
 class MainFragment : Fragment(),SearchView.OnQueryTextListener{
 
@@ -77,7 +78,7 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
         viewModel = tempViewModel
     }
     fun clickAddPersonFabBtn(it:View){
-        Navigation.findNavController(it).navigate(R.id.toPersonRegistrationFragment)
+     Navigation.makeTransition(it,R.id.toPersonRegistrationFragment)
     }
     //aramak için butona tıkladığımızda ise bu çalışır
     override fun onQueryTextSubmit(query: String): Boolean {

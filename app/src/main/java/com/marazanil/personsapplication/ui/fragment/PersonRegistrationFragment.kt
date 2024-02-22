@@ -9,12 +9,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.marazanil.personsapplication.R
 import com.marazanil.personsapplication.databinding.FragmentPersonRegistrationBinding
 import com.marazanil.personsapplication.ui.viewmodel.MainFragmentViewModel
 import com.marazanil.personsapplication.ui.viewmodel.PersonDetailFragmentViewModel
 import com.marazanil.personsapplication.ui.viewmodel.PersonRegistrationFragmentViewModel
+import com.marazanil.personsapplication.util.makeTransition
 
 class PersonRegistrationFragment : Fragment() {
     private lateinit var binding : FragmentPersonRegistrationBinding
@@ -27,7 +29,7 @@ class PersonRegistrationFragment : Fragment() {
         binding.personRegistrationFragment = this
 
         binding.backButtonAtRegistration.setOnClickListener {
-            findNavController().navigate(R.id.backToMainFragmentAtRegistration)
+            Navigation.makeTransition(it,R.id.backButtonAtRegistration)
         }
         return binding.root
     }
@@ -38,17 +40,12 @@ class PersonRegistrationFragment : Fragment() {
         viewModel = tempViewModel
     }
 
-
         //event handler kullandık (dataBinding ile)
          fun personSaveBtn(personName : String, personPhoneNumber : String){
             Toast.makeText(context,"$personName başarıyla Kaydedildi",Toast.LENGTH_SHORT).show()
                 viewModel.register(personName,personPhoneNumber)
          }
-
-
-
-
-    }
+}
 
 
 

@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.marazanil.personsapplication.R
 import com.marazanil.personsapplication.databinding.FragmentPersonDetailBinding
 import com.marazanil.personsapplication.ui.viewmodel.PersonDetailFragmentViewModel
+import com.marazanil.personsapplication.util.makeTransition
 
 class PersonDetailFragment : Fragment() {
 
@@ -34,7 +36,7 @@ class PersonDetailFragment : Fragment() {
 
 
         binding.backButtonAtRegistration.setOnClickListener {
-            findNavController().navigate(R.id.backToMainFragmentAtDetail)
+            Navigation.makeTransition(it,R.id.backToMainFragmentAtDetail)
         }
         return binding.root
     }
