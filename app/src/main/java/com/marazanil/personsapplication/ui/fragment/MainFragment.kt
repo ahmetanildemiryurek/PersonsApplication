@@ -27,7 +27,9 @@ import com.marazanil.personsapplication.ui.adapter.PersonAdapter
 import com.marazanil.personsapplication.ui.viewmodel.MainFragmentViewModel
 import com.marazanil.personsapplication.ui.viewmodel.PersonDetailFragmentViewModel
 import com.marazanil.personsapplication.util.makeTransition
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment(),SearchView.OnQueryTextListener{
 
     private lateinit var binding : FragmentMainBinding
@@ -46,9 +48,6 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
             binding.personAdapter = personAdapter
         }
 
-
-
-
         requireActivity().addMenuProvider(object :MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.toolbar_menu , menu)
@@ -58,7 +57,6 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
               val item = menu.findItem(R.id.action_find)
                 val searchView = item.actionView as SearchView
                 searchView.setOnQueryTextListener(this@MainFragment)
-
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -67,10 +65,7 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
 
         },viewLifecycleOwner,Lifecycle.State.RESUMED)
 
-
         return binding.root
-
-
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,8 +86,6 @@ class MainFragment : Fragment(),SearchView.OnQueryTextListener{
         viewModel.search(newText)
         return true
     }
-
-
 
     //bu sayfaya geri döndüğümüzü anlamamızı sağlayacak olan lifecycle fun
     override fun onResume() {

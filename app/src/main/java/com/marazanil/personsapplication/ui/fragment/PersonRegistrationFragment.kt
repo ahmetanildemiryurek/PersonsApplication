@@ -17,7 +17,9 @@ import com.marazanil.personsapplication.ui.viewmodel.MainFragmentViewModel
 import com.marazanil.personsapplication.ui.viewmodel.PersonDetailFragmentViewModel
 import com.marazanil.personsapplication.ui.viewmodel.PersonRegistrationFragmentViewModel
 import com.marazanil.personsapplication.util.makeTransition
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PersonRegistrationFragment : Fragment() {
     private lateinit var binding : FragmentPersonRegistrationBinding
     private lateinit var viewModel: PersonRegistrationFragmentViewModel

@@ -14,7 +14,10 @@ import com.marazanil.personsapplication.R
 import com.marazanil.personsapplication.databinding.FragmentPersonDetailBinding
 import com.marazanil.personsapplication.ui.viewmodel.PersonDetailFragmentViewModel
 import com.marazanil.personsapplication.util.makeTransition
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class PersonDetailFragment : Fragment() {
 
     private lateinit var binding : FragmentPersonDetailBinding

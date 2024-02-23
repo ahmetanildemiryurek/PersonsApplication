@@ -4,9 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.marazanil.personsapplication.data.entity.Persons
 import com.marazanil.personsapplication.data.repo.PersonDaoRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainFragmentViewModel : ViewModel(){
-    val personRepo = PersonDaoRepository()
+@HiltViewModel
+class MainFragmentViewModel @Inject constructor(var personRepo : PersonDaoRepository): ViewModel(){
     var personList = MutableLiveData<List<Persons>>()
 
     init {
