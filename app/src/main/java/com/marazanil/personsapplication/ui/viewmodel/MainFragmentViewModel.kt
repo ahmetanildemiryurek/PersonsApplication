@@ -13,18 +13,18 @@ class MainFragmentViewModel @Inject constructor(var personRepo : PersonDaoReposi
 
     init {
         loadPersons()
-        personList = personRepo.getAllPersons()
+        personList = personRepo.getPersons()
     }
 
     fun search(searchingWords : String){
         personRepo.searchPerson(searchingWords)
     }
 
-    fun delete(personId : Long){
+    fun delete(personId : Int){
         personRepo.deletePerson(personId)
     }
     fun loadPersons(){
-        personRepo.allPersons()
+        personRepo.getAllPersons()
     }
 
 

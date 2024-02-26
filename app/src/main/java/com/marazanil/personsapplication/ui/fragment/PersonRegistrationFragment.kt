@@ -1,7 +1,6 @@
 package com.marazanil.personsapplication.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +9,8 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.marazanil.personsapplication.R
 import com.marazanil.personsapplication.databinding.FragmentPersonRegistrationBinding
-import com.marazanil.personsapplication.ui.viewmodel.MainFragmentViewModel
-import com.marazanil.personsapplication.ui.viewmodel.PersonDetailFragmentViewModel
 import com.marazanil.personsapplication.ui.viewmodel.PersonRegistrationFragmentViewModel
 import com.marazanil.personsapplication.util.makeTransition
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,9 +26,7 @@ class PersonRegistrationFragment : Fragment() {
         binding.toolbarPersonRegistrationTitle = "Kişi Kayıt"
         binding.personRegistrationFragment = this
 
-        binding.backButtonAtRegistration.setOnClickListener {
-            Navigation.makeTransition(it,R.id.backButtonAtRegistration)
-        }
+
         return binding.root
     }
 
@@ -47,6 +41,11 @@ class PersonRegistrationFragment : Fragment() {
             Toast.makeText(context,"$personName başarıyla Kaydedildi",Toast.LENGTH_SHORT).show()
                 viewModel.register(personName,personPhoneNumber)
          }
+
+    fun clickToBackAtRegistration(it:View){
+        Navigation.makeTransition(it,R.id.backToMainFragmentAtRegistration)
+    }
+
 }
 
 

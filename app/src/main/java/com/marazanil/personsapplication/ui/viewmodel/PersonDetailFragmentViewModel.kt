@@ -8,7 +8,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PersonDetailFragmentViewModel @Inject constructor(var personRepo : PersonDaoRepository): ViewModel(){
 
-    fun update(personId:Long, personDetailName:String, personPhoneNumberDetail : String){
+    fun update(personId:Int, personDetailName:String, personPhoneNumberDetail : String){
         personRepo.personUpdate(personId,personDetailName,personPhoneNumberDetail)
     }
 

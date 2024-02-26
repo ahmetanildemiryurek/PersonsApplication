@@ -80,7 +80,8 @@
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/personUpdateBtn"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:onClick="@{() -> personDetailFragment.clickToBackAtDetail(backButtonAtRegistration)}"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

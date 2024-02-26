@@ -53,7 +53,7 @@ class PersonAdapter(var mContext: Context,
         b.deletePersonInformation.setOnClickListener { view ->
             val sb = Snackbar.make(view, "${person.personName} silinsin mi?", Snackbar.LENGTH_LONG)
             sb.setAction("EVET") {
-                viewModel.delete(person.personId )
+                viewModel.delete(person.personId.toString().toInt())
                             }
             sb.show()
         }

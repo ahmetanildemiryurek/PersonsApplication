@@ -38,9 +38,6 @@ class PersonDetailFragment : Fragment() {
         binding.personObject = incomingPerson
 
 
-        binding.backButtonAtRegistration.setOnClickListener {
-            Navigation.makeTransition(it,R.id.backToMainFragmentAtDetail)
-        }
         return binding.root
     }
 
@@ -50,8 +47,11 @@ class PersonDetailFragment : Fragment() {
         viewModel = tempViewModel
     }
 
-     fun personUpdate(personId:Long, personDetailName:String, personPhoneNumberDetail : String){
+     fun personUpdate(personId:Int, personDetailName:String, personPhoneNumberDetail : String){
         viewModel.update(personId,personDetailName,personPhoneNumberDetail)
+    }
+    fun clickToBackAtDetail(it:View){
+        Navigation.makeTransition(it,R.id.backToMainFragmentAtDetail)
     }
 
 }

@@ -1,9 +1,15 @@
 package com.marazanil.personsapplication.data.entity
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import org.jetbrains.annotations.NotNull
 import java.io.Serializable
 
 //Kişiler nesnesini sayfalar arası aktarım yapacağız bu nedenle
 // dataları platform bağımsız hale getirmek için Serializable kullandık.
-data class Persons(var personId : Long,
-                    var personName: String,
-                    var personNumber: String) : Serializable
+@Entity(tableName = "persons")
+data class Persons( @PrimaryKey(autoGenerate = true)
+                    @ColumnInfo(name = "personId") @NotNull var personId : Int,
+                    @ColumnInfo(name = "personName") @NotNull var personName: String,
+                    @ColumnInfo(name = "personPhone") @NotNull var personNumber: String) : Serializable
