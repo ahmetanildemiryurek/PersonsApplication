@@ -13,7 +13,7 @@ class MainFragmentViewModel @Inject constructor(var personRepo : PersonDaoReposi
 
     init {
         loadPersons()
-        personList = personRepo.getPersons()
+        personRepo.getPersons()
     }
 
     fun search(searchingWords : String){

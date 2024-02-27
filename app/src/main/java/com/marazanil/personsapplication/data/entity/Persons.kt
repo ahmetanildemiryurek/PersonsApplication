@@ -12,4 +12,4 @@ import java.io.Serializable
 data class Persons( @PrimaryKey(autoGenerate = true)
                     @ColumnInfo(name = "personId") @NotNull var personId : Int,
                     @ColumnInfo(name = "personName") @NotNull var personName: String,
-                    @ColumnInfo(name = "personPhone") @NotNull var personNumber: String) : Serializable
+                    @ColumnInfo(name = "personPhoneNumber") @NotNull var personPhoneNumber: String) : Serializable

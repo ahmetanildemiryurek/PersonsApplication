@@ -30,7 +30,7 @@
                     android:id="@+id/personInformation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{personObject.personName+" - "+personObject.personNumber}'
+                    android:text='@{personObject.personName+" - "+ personObject.personPhoneNumber}'
                     android:hint="@string/personInformationHint"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
